@@ -1,15 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h2 v-for="actor in actors" :key="actor.name">
+    <h2>{{ actor.name }}</h2>
+    <h3 v-for="movie in actor.movies" :key="movie">{{ movie }}</h3>
+  </h2>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      names: ['Bruce', 'Clark', 'Diana'],
+      fullNames: [
+        { first: 'Bruce', last: 'Wayne' },
+        { first: 'Clark', last: 'Kent' },
+        { first: 'Princess', last: 'Diana' },
+      ],
+      actors: [
+        {
+          name: 'Christian bale',
+          movies: ['Batman', 'The Prestige'],
+        },
+        {
+          name: 'Di Caprio',
+          movies: ['Titatnic', 'Inception'],
+        }
+      ]
+    }
   }
 }
 </script>
@@ -22,5 +39,21 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.promoted {
+  font-style: italic;
+}
+
+.new {
+  color: olivedrab;
+}
+
+.sold-out {
+  color: red;
 }
 </style>
