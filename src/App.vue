@@ -1,63 +1,29 @@
 <template>
-  <h2>Volume Tracker (0-20)</h2>
-  <h3>Current Volume - {{ volume }}</h3>
-  <div>
-    <button @click="volume += 2">Increase</button>
-    <button @click="volume -= 2">Decrease</button>
-  </div>
-  <input type="text" v-model="movie">
-  <input type="text" v-model="movieInfo.title">
-  <input type="text" v-model="movieInfo.actor">
-  <div>
-    <button @click="movieList = movieList.concat(['Wonder Woman'])">Add Movie</button>
-  </div>
+  <CardComp></CardComp>
+  <CardComp>Card content</CardComp>
+  <CardComp>
+    <h2>Card content</h2>
+  </CardComp>
+  <CardComp>
+    <img src="https://picsum.photos/200">
+  </CardComp>
 </template>
 
 <script>
+import CardComp from './components/CardComp.vue';
+
+
 export default {
   name: 'App',
+  components: {
+    CardComp
+  },
   data() {
     return {
-      volume: 0,
-      movie: 'Batman',
-      movieInfo: {
-        title: '',
-        actor: ''
-      },
-      movieList: ['Batman', 'Superman']
+      name: ''
     }
   },
-  methods: {
-
-  },
-  computed: {
-
-  },
-  watch: {
-    volume(newValue, oldValue) {
-      if (newValue > oldValue && newValue === 16) {
-        alert('Listening to a high volume...')
-      }
-    },
-    movie: {
-      handler(newValue) {
-        console.log(`Calling API with movie name = ${newValue}`)
-      },
-      immediate: true,
-    },
-    movieInfo: {
-      handler(newValue) {
-        console.log(`Calling API with movie title = ${newValue.title} and actor = ${newValue.actor}`)
-      },
-      deep: true,
-    },
-    movieList: {
-      handler(newValue) {
-        console.log(`updated list ${newValue}`)
-      },
-      // deep: true,
-    }
-  }
+  methods: {}
 }
 </script>
 
@@ -66,7 +32,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
+  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
